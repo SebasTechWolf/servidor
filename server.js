@@ -1,5 +1,4 @@
 const express = require("express")
-const app = express()
 const http = require("http")
 const server = http.createServer(app)
 const logger = require("morgan")
@@ -11,7 +10,7 @@ const app = express();
 app.use(cors({
   origin:
     ["https://goe-web.vercel.app"],
-    credentials: true
+  credentials: true
 }));
 
 // Importar rutas - Asegúrate de que el nombre del archivo sea correcto
