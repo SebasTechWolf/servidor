@@ -3,7 +3,7 @@ const http = require("http")
 const server = http.createServer(app)
 const logger = require("morgan")
 const cors = require("cors")
-require('dotenv').config({ path: './db.env' });
+require('dotenv').config();
 
 const app = express();
 
