@@ -1,6 +1,7 @@
 require('dotenv').config();
 const mysql = require("mysql2/promise");
 
+port: process.env.PORT;
 const dbConfig = {
   host: process.env.DB_HOS,
   user: process.env.DB_USER,
