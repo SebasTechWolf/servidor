@@ -6,6 +6,14 @@ const logger = require("morgan")
 const cors = require("cors")
 require('dotenv').config({ path: './db.env' });
 
+const app = express();
+
+app.use(cors({
+  origin:
+    ["https://goe-web.vercel.app"],
+    credentials: true
+}));
+
 // Importar rutas - Asegúrate de que el nombre del archivo sea correcto
 const asistenciaRoutes = require("./routes/asistencia")
 const cursoRoutes = require("./routes/curso")
