@@ -8,7 +8,10 @@ const dbConfig = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   connectionLimit: 10,
-  waitForConnections: true
+  waitForConnections: true,
+  ssl: {
+    rejectUnauthorized: false
+  }
 };
 
 console.log("Configuración de la base de datos:", {
