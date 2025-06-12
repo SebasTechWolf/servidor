@@ -1,11 +1,10 @@
 const express = require("express")
 const http = require("http")
+const app = express();
 const server = http.createServer(app)
 const logger = require("morgan")
 const cors = require("cors")
 require('dotenv').config();
-
-const app = express();
 
 app.use(cors({
   origin:
