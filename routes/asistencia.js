@@ -143,7 +143,7 @@ router.get("/estudiante/:documento", async (req, res) => {
 router.get("/profe/:idasistencia", async (req, res) => {
     try {
         const { idasistencia } = req.params;
-        const asistencia = await db.query("SELECT listado.*, asistencia.*, materia.nomb_mat, usuario.grado AS curso FROM asistencia INNER JOIN listado ON listado.idlistado = asistencia.idlistado INNER JOIN usuario ON usuario.documento = asistencia.documento INNER JOIN materia ON materia.idMat = asistencia.idMat WHERE asistencia.profesor = ? GROUP BY asistencia.idlistado", [idasistencia]);
+        const asistencia = await db.query("SELECT listado.*, MAX(asistencia.fecha_asistencia) AS ultima_fecha,  MAX(usuario.grado) AS curso, MAX(asistencia.profesor) AS profesor FROM asistencia INNER JOIN listado ON listado.idlistado = asistencia.idlistado INNER JOIN usuario ON usuario.documento = asistencia.documento INNER JOIN materia ON materia.idMat = asistencia.idMat WHERE asistencia.profesor = ? GROUP BY asistencia.idlistado", [idasistencia]);
 
         if (asistencia.length === 0) {
             return res.status(404).json({ success: false, message: "Asistencia no encontrada" });
