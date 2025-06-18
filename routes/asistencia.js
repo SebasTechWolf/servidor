@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 router.get("/all", async (req, res) => {
 
     try {
-        const asistencias = await db.query("SELECT listado.*, asistencia.fecha_asistencia, usuario.grado AS curso, asistencia.profesor FROM asistencia INNER JOIN listado ON listado.idlistado = asistencia.idlistado INNER JOIN usuario ON usuario.documento = asistencia.documento INNER JOIN materia ON materia.idMat = asistencia.idMat WHERE asistencia.profesor = ? GROUP BY asistencia.idlistado");
+        const asistencias = await db.query("SELECT listado.*, asistencia.fecha_asistencia, usuario.grado AS curso, asistencia.profesor FROM asistencia INNER JOIN listado ON listado.idlistado = asistencia.idlistado INNER JOIN usuario ON usuario.documento = asistencia.documento INNER JOIN materia ON materia.idMat = asistencia.idMat WHERE asistencia.profesor = ? GROUP BY listado.idlistado");
         res.json({ success: true, data: asistencias });
     } catch (error) {
         console.error("Error al obtener asistencias:", error);
