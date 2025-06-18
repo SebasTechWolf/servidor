@@ -140,7 +140,7 @@ router.get("/estudiante/:documento", async (req, res) => {
 });
 
 //listado de asistencias por profesor
-router.get("/:idasistencia", async (req, res) => {
+router.get("/profe/:idasistencia", async (req, res) => {
     try {
         const { idasistencia } = req.params;
         const asistencia = await db.query("SELECT listado.*, asistencia.*, materia.nomb_mat, usuario.grado AS curso FROM asistencia INNER JOIN listado ON listado.idlistado = asistencia.idlistado INNER JOIN usuario ON usuario.documento = asistencia.documento INNER JOIN materia ON materia.idMat = asistencia.idMat WHERE asistencia.profesor = ? GROUP BY asistencia.idlistado", [idasistencia]);
